@@ -4,8 +4,6 @@ import SearchBox from "../SearchBox/SearchBox";
 import initialTasks from "../tasks.json";
 import ContactList from "../ContactList/ContactList";
 
-// JSON.parse(savedTasks);
-
 export default function App() {
   const getTasks = () => {
     const savedTasks = localStorage.getItem("my-tasks");

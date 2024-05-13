@@ -16,7 +16,6 @@ const userSchema = Yup.object().shape({
 
 export default function ContactForm({ onAdd }) {
   const fieldId = useId();
-  //   const objId = nanoid();
 
   const handleSubmit = (values, actions) => {
     const newContact = {

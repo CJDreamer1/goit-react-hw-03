@@ -1,0 +1,7 @@
+.inputDecoration {
+  outline: none;
+  width: 412px;
+}
+.inputDecoration:focus {
+  outline: 1px solid rgb(69, 69, 255);
+}

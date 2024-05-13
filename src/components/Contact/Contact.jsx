@@ -6,10 +6,15 @@ export default function Contact({ data: { name, number, id }, onDelete }) {
   return (
     <div className={css.form}>
       <div className={css.sform}>
-        <IoPersonSharp className={css.icon} />
-        <p className={css.paragraph}>{name}</p>
-        <FaPhone className={css.icon} />
-        <p className={css.paragraph}>{number}</p>
+        <p className={css.paragraph}>
+          <IoPersonSharp className={css.icon} />
+          {name}
+        </p>
+
+        <p className={css.paragraph}>
+          <FaPhone className={css.icon} />
+          {number}
+        </p>
       </div>
 
       <button className={css.button} onClick={() => onDelete(id)}>
