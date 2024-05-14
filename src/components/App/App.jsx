@@ -7,7 +7,7 @@ import ContactList from "../ContactList/ContactList";
 export default function App() {
   const getTasks = () => {
     const savedTasks = localStorage.getItem("my-tasks");
-    return savedTasks !== null ? JSON.parse(savedTasks) : { initialTasks };
+    return savedTasks !== null ? JSON.parse(savedTasks) : initialTasks;
   };
 
   const [tasks, setTasks] = useState(getTasks);
