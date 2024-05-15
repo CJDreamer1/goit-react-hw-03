@@ -1,44 +1,44 @@
 import { useState, useEffect } from "react";
 import ContactForm from "../ContactForm/ContactForm";
 import SearchBox from "../SearchBox/SearchBox";
-import initialTasks from "../tasks.json";
+import initialContacts from "../contacts.json";
 import ContactList from "../ContactList/ContactList";
 
 export default function App() {
-  const getTasks = () => {
-    const savedTasks = localStorage.getItem("my-tasks");
-    return savedTasks !== null ? JSON.parse(savedTasks) : initialTasks;
+  const getContacts = () => {
+    const savedContacts = localStorage.getItem("my-contacts");
+    return savedContacts !== null ? JSON.parse(savedContacts) : initialContacts;
   };
 
-  const [tasks, setTasks] = useState(getTasks);
+  const [contacts, setContacts] = useState(getContacts);
   const [filter, setFilter] = useState("");
 
-  const addTask = (newTask) => {
-    setTasks((prevTasks) => {
-      return [...prevTasks, newTask];
+  const addContact = (newContact) => {
+    setContacts((prevContacts) => {
+      return [...prevContacts, newContact];
     });
   };
 
-  const deleteTask = (taskId) => {
-    setTasks((prevTasks) => {
-      return prevTasks.filter((task) => task.id !== taskId);
+  const deleteContact = (contactId) => {
+    setContacts((prevContacts) => {
+      return prevContacts.filter((contact) => contact.id !== contactId);
     });
   };
 
-  const visibleTasks = tasks.filter((task) =>
-    task.name.toLowerCase().includes(filter.toLowerCase())
+  const visibleContacts = contacts.filter((contact) =>
+    contact.name.toLowerCase().includes(filter.toLowerCase())
   );
 
   useEffect(() => {
-    localStorage.setItem("my-tasks", JSON.stringify(tasks));
-  }, [tasks]);
+    localStorage.setItem("my-contacts", JSON.stringify(contacts));
+  }, [contacts]);
 
   return (
     <div>
       <h1>Phonebook</h1>
-      <ContactForm onAdd={addTask} />
+      <ContactForm onAdd={addContact} />
       <SearchBox value={filter} onFilter={setFilter} />
-      <ContactList tasks={visibleTasks} onDelete={deleteTask} />
+      <ContactList contacts={visibleContacts} onDelete={deleteContact} />
     </div>
   );
 }
